@@ -42,6 +42,13 @@ def gen_links(parent_dir, url):
         gen_link(parent_dir, l)
 
 if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        help_str='''
+    %s <zip_dir> <glob_*>   copy pattern matched zip files
+    %s <zip_dir>            copy gradle*.zip in <zip_dir>
+'''
+        print help_str % (sys.argv[0], sys.argv[0])
+        sys.exit(1)
     pattern = 'gradle*.zip'
     if len(sys.argv) >= 3:
         pattern = sys.argv[2]
