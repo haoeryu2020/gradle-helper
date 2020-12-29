@@ -30,7 +30,10 @@ def gen_link(src, link_name):
     if not os.path.exists(link_name):
         link_src =os.path.basename(src)
         print "%s -> %s" % (link_name, link_src)
-        os.symlink(link_src, link_name)
+        try:
+            os.symlink(link_src, link_name)
+        except:
+            shutil.copytree(link_src, link_name)
 
 def gen_links(parent_dir, url):
     links = []
